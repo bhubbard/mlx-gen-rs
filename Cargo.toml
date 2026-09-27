@@ -1,0 +1,46 @@
+[package]
+name = "mlx-gen"
+version = "0.1.0"
+edition = "2021"
+authors = ["Brandon Hubbard <bhubbard@users.noreply.github.com>"]
+description = "High-performance generative image & video runtime for Apple Silicon (Rust fork of lpalbou/mlx-gen)"
+repository = "https://github.com/bhubbard/mlx-gen-rs"
+homepage = "https://code.brandonhubbard.com/mlx-gen-rs/"
+documentation = "https://docs.rs/mlx-gen"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["apple-silicon", "mlx", "diffusion", "video-generation", "image-generation"]
+categories = ["multimedia::video", "multimedia::images", "science::robotics", "command-line-utilities"]
+
+[lib]
+name = "mlx_gen"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mlxgen"
+path = "src/bin/mlxgen.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive", "env", "cargo"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+indicatif = { version = "0.17", features = ["rayon"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+half = { version = "2.4", features = ["serde"] }
+safetensors = "0.5"
+memmap2 = "0.9"
+tokio = { version = "1.43", features = ["full"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream", "json"] }
+futures-util = "0.3"
+regex = "1.11"
+rayon = "1.10"
+dirs = "6.0"
+chrono = { version = "0.4", features = ["serde"] }
+byteorder = "1.5"
+
+[dev-dependencies]
+tempfile = "3.17"
